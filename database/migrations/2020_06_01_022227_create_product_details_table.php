@@ -16,10 +16,11 @@ class CreateProductDetailsTable extends Migration
         Schema::create('product_details', function (Blueprint $table) {
             $table->id();
             $table->enum('size', ['S','M','L','XL','XXL']);
-            $table->integer('quantitty');
+            $table->integer('quantity');
             $table->string('color')->nullable();
             $table->string('image_url')->nullable();
             $table->timestamps();
+            $table->foreignId('product_id')->nullable()->constrained('products')->onDelete('cascade');
         });
     }
 
